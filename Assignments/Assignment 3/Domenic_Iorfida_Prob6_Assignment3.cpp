@@ -5,7 +5,7 @@
 class Spaceship
 {
     private: // private data fields keep track of coordinates and position
-        // note that we are using computer graphics coordinates, not cartesian.
+        // note that we are using computer graphics coordinates, not cartesian coordinates.
         int x;
         int y;
         std::string position; // Format: {x: X, y: Y, direction: 'DIRECTION'}
