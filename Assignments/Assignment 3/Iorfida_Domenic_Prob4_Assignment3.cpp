@@ -23,7 +23,7 @@ class Attendance
         }
         bool isLate() 
         {
-
+            
         }
 };
 
