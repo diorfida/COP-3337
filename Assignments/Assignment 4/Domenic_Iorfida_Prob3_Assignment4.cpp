@@ -13,8 +13,8 @@ class MySet
         MySet(unsigned int _range)
         {
             range = _range;
-            size = _range + 1;
-            set = new bool[size] {false};
+            size = 0;
+            set = new bool[range + 1] {false};
         }
 
         // copy constructor
@@ -24,8 +24,8 @@ class MySet
             size = oldSet.size;
 
             // deep copy the set array
-            bool * temp = new bool[size] {false};
-            for(int i = 0; i < size; i++)
+            bool * temp = new bool[range + 1] {false};
+            for(int i = 0; i < range + 1; i++)
             {
                 temp[i] = oldSet.set[i];
             }
@@ -46,7 +46,10 @@ class MySet
             if(k > range)
                 std::cout << "Invalid insert attempted for the number " << k << "!" << std::endl;
             else
+            {
                 set[k] = true;
+                size++;
+            }
         }
 
         // deletes an element from the set
@@ -56,7 +59,10 @@ class MySet
             if(m > range)
                 std::cout << "Invalid delete attempted for the number " << m << "!" << std::endl;
             else
+            {
                 set[m] = false;
+                size--;
+            }
         }
 
         // prints the set
@@ -64,7 +70,7 @@ class MySet
         {
             std::cout << "{ ";
             bool hasElements = false; // keeps track of if any elements were printed
-            for(int i = 0; i < size; i++)
+            for(int i = 0; i < range + 1; i++)
             {
                 if(set[i] && !hasElements) // first instance of a number to print
                 {
@@ -84,7 +90,7 @@ class MySet
         {
             if(size != second.size) // don't even bother checking the array elements if they don't have the same size
                 return false;
-            for(int i = 0; i < size; i++)
+            for(int i = 0; i < range + 1; i++)
             {
                 if(set[i] != second.set[i]) // if one is not equal
                     return false;
