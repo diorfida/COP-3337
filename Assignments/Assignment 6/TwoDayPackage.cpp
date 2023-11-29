@@ -1,0 +1,29 @@
+#include "TwoDayPackage.h"
+
+TwoDayPackage::TwoDayPackage(const std::string & name, const std::string & address, const std::string & city, const std::string & state, int ZIP, double w, double cost, double fee)
+    : Package(name, address, city, state, ZIP, w, cost) // use the correct constructor with inputs
+{
+    this->fee = fee; // assign the flat fee accordingly
+}
+
+void TwoDayPackage::setFlatFee(double fee)
+{
+    this->fee = fee; // assign the flat fee accordingly
+}
+
+double TwoDayPackage::calculateCost() const
+{
+    return Package::calculateCost() + fee; // add on the flat fee to the calculated cost
+}
+
+void TwoDayPackage::printPackageInfo() const
+{
+    // same print function with a different package type
+    std::cout << "------------------------------" << std::endl;
+    std::cout << "Two Day Package id " << ID << ":" << std::endl << std::endl;
+    std::cout << name << std::endl;
+    std::cout << address << std::endl;
+    std::cout << city << ", " << state << " " << ZIP << std::endl << std::endl;
+    std::cout << "Cost: $" << calculateCost() << std::endl;
+    std::cout << "------------------------------" << std::endl;
+}
